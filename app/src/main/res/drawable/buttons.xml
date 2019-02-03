@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is for the inputs of Registration's design, the edit texts and such-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="#F4A460"></solid>
+
+    <corners android:radius="20dp"></corners>
+
+</shape>

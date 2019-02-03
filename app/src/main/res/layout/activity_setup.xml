@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetupActivity"
+    android:background="@color/WhiteBrown">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="159dp"
+        android:layout_height="147dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_person"
+        android:id="@+id/setup_profile_image"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/user_textlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setup_profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:hint="@string/username"
+            android:id="@+id/setup_username"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/fname_textlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/user_textlayout"
+        android:layout_marginTop="10dp">
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:hint="@string/full_name"
+            android:id="@+id/setup_fullname"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/country_textlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fname_textlayout"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:hint="@string/country"
+            android:padding="5dp"
+            android:id="@+id/setup_country"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="@string/save"
+        android:background="@drawable/buttons"
+        android:id="@+id/setup_save"/>
+
+
+</RelativeLayout>

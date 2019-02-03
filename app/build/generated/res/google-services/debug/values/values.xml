@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">450596171305-jq0qopcpg3lljnjol25oln1o6hvfnfft.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://rant-b201d.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">450596171305</string>
+    <string name="google_api_key" translatable="false">AIzaSyCDZ0AdfWOQM-JToowlT0yYqZWavbyula8</string>
+    <string name="google_app_id" translatable="false">1:450596171305:android:af3498b94118a5ce</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCDZ0AdfWOQM-JToowlT0yYqZWavbyula8</string>
+    <string name="google_storage_bucket" translatable="false">rant-b201d.appspot.com</string>
+    <string name="project_id" translatable="false">rant-b201d</string>
+</resources>

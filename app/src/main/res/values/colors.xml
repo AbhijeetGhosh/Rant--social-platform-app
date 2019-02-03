@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#FB8C00</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="WhiteBrown">#FFDEAD</color>
+    <!--adding from sutiksh's work-->
+    <color name="startblue">#09cfdf</color>
+    <color name="endblue">#0bcce6</color>
+    <color name="graylight">#fafafa</color>
+    <color name="face_back">#3b5998</color>
+    <color name="color_theme">#F4A460</color>
+
+    <color name="white">#fff</color>
+    <color name="cyanblue">#30d3ce</color>
+    <color name="darkred">#8B0000</color>
+    <color name="indianred">#CD5C5C</color>
+    <color name = "darkorange"/>
+</resources>
+

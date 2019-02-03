@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Rant</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Sutiksh Verma</string>
+    <string name="nav_header_subtitle">Destroyer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <!--adding from sutiksh's work-->
+    <string name="user">User</string>
+    <string name="followers">Followers</string>
+    <string name="follow_count">10m</string>
+    <string name="following_count">450</string>
+    <string name="following">Following</string>
+    <string name="email_add">verma.sutiksh27@gmail.com</string>
+    <string name="phoneno">+917043944785</string>
+    <string name="add_as_friend">Add As Friend</string>
+    <string name="show_all_comments">Show All Comments</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register_text">Don\'t have an account? Create one</string>
+    <string name="login_with_facebook">Login With Facebook</string>
+    <string name="tweet_login">Login With Twitter</string>
+    <string name="username">Username</string>
+    <string name="full_name">Full name</string>
+    <string name="country">Country</string>
+    <string name="save">Save</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="facebook_app_id">280386322651795</string>
+    <string name="fb_login_protocol_scheme">fb280386322651795</string>
+    <string name="title_activity_post">PostActivity</string>
+    <string name="developer">Sutiksh Verma</string>
+    <string name="birtday">27-July-2019</string>
+    <string name="slogan">I am the best in the world</string>
+    <string name="title_of_your_rant">Title of your rant</string>
+    <string name="rant_it">Want to rant something?</string>
+    <string name="rant">Rant</string>
+    <string name="rants">Rants</string>
+    <string name="status">Status</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="done">Done</string>
+    <string name="default_value">0</string>
+
+
+</resources>
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:inputType="text|textMultiLine"
+        android:hint="Want to rant about it?"
+        android:id="@+id/EditT"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/EditT"
+        android:background="#fff"
+        android:layout_marginTop="9dp"
+        android:src="@mipmap/add_photo_large"
+        android:scaleType="center"/>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/buttons"
+        android:text="Rant"
+        android:id="@+id/FinalButton"/>
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "450596171305",
+    "firebase_url": "https://rant-b201d.firebaseio.com",
+    "project_id": "rant-b201d",
+    "storage_bucket": "rant-b201d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450596171305:android:af3498b94118a5ce",
+        "android_client_info": {
+          "package_name": "com.apps.abhijeet.rant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450596171305-2kno0nknrt6rhqigp46coskq8s7n1u9c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.abhijeet.rant",
+            "certificate_hash": "44e6c5f0f31dbd45e9cbef4d8d49fa71ff646fac"
+          }
+        },
+        {
+          "client_id": "450596171305-jq0qopcpg3lljnjol25oln1o6hvfnfft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDZ0AdfWOQM-JToowlT0yYqZWavbyula8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450596171305-jq0qopcpg3lljnjol25oln1o6hvfnfft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
