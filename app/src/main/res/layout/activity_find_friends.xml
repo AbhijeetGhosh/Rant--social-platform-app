@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindFriendsActivity">
+    tools:context=".FindFriendsActivity"
+    android:background="@color/com_facebook_button_send_background_color_pressed">
 
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/find_friend_bar_layout"
+        layout="@layout/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myLayout"
+        android:layout_below="@id/find_friend_bar_layout"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/simpletextID"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="20sp"
+            android:text="Search for Friends"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="70dp"
+            android:id="@+id/search_box_input"
+            android:layout_below="@id/simpletextID"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/inputs"
+            android:hint="Search Here"
+            android:inputType="textImeMultiLine"
+            android:padding="10dp"
+            android:textColorHint="@color/colorPrimary"
+            android:textColor="@color/com_facebook_button_send_background_color_pressed"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/Search_Button"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/simpletextID"
+            android:layout_toEndOf="@id/search_box_input"
+            android:background="@drawable/inputs"
+            android:src="@drawable/search" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Search_Result_List"
+        android:layout_width="378dp"
+        android:layout_height="537dp"
+        android:layout_below="@id/myLayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

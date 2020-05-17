@@ -22,10 +22,13 @@ public class UsersActivity extends AppCompatActivity {
     private TextView userStatus;
     private TextView userGender;
     private TextView userCountry;
+    private CircularImageView userProfImg;
+
     private DatabaseReference profileUserRef;
     private FirebaseAuth mAuth;
+
     private String currentUserId;
-    private CircularImageView userProfImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class UsersActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
+
         userFullname = (TextView) findViewById(R.id.userFullName);
         userUsername = (TextView) findViewById(R.id.userUserName);
         userGender = (TextView) findViewById(R.id.userGender);
@@ -40,29 +44,34 @@ public class UsersActivity extends AppCompatActivity {
         userCountry = (TextView) findViewById(R.id.userCountry);
         userStatus = (TextView) findViewById(R.id.userStatus);
         userProfImg = (CircularImageView) findViewById(R.id.userProfImg);
+
         profileUserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
 
         profileUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String myProfImg = dataSnapshot.child("profileimage").getValue().toString();
-                String myUsername = dataSnapshot.child("username").getValue().toString();
-                String myFullname = dataSnapshot.child("fullname").getValue().toString();
-                String myStatus = dataSnapshot.child("status").getValue().toString();
-                String myDob = dataSnapshot.child("dob").getValue().toString();
-                String myCountry = dataSnapshot.child("country").getValue().toString();
-                String myGender = dataSnapshot.child("Gender").getValue().toString();
 
-                Picasso.Builder picassoBuilder = new Picasso.Builder(UsersActivity.this);
-                Picasso picasso = picassoBuilder.build();
-                picasso.load(myProfImg).placeholder(R.mipmap.ic_person).into(userProfImg);
+                if(dataSnapshot.exists())
+                {
+                    String myProfImg = dataSnapshot.child("profileimage").getValue().toString();
+                    String myUsername = dataSnapshot.child("username").getValue().toString();
+                    String myFullname = dataSnapshot.child("fullname").getValue().toString();
+                    String myStatus = dataSnapshot.child("status").getValue().toString();
+                    String myDob = dataSnapshot.child("dob").getValue().toString();
+                    String myCountry = dataSnapshot.child("country").getValue().toString();
+                    String myGender = dataSnapshot.child("Gender").getValue().toString();
 
-                userUsername.setText("@" + myUsername);
-                userStatus.setText(myStatus);
-                userFullname.setText(myFullname);
-                userDob.setText("Date Of Birth" + myDob);
-                userCountry.setText("Country" + myCountry);
-                userGender.setText("Gender"+ myGender);
+                    Picasso.Builder picassoBuilder = new Picasso.Builder(UsersActivity.this);
+                    Picasso picasso = picassoBuilder.build();
+                    picasso.load(myProfImg).placeholder(R.mipmap.ic_person).into(userProfImg);
+
+                    userUsername.setText("@" + myUsername);
+                    userStatus.setText(myStatus);
+                    userFullname.setText(myFullname);
+                    userDob.setText("Date Of Birth" + myDob);
+                    userCountry.setText("Country" + myCountry);
+                    userGender.setText("Gender" + myGender);
+                }
             }
 
             @Override

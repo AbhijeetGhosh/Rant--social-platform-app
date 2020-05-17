@@ -38,6 +38,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
+import java.util.Random;
+
+import es.dmoral.toasty.Toasty;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String currentUserID;
     private RecyclerView postList;
 
+    String AgreePopup = "ikr";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,11 +64,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        // InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         //imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 
+
         mAuth = FirebaseAuth.getInstance(); //for authentications
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
+
+        //agree and disagree
         AgreeRef = FirebaseDatabase.getInstance().getReference().child("Agrees");
         DisagreeRef = FirebaseDatabase.getInstance().getReference().child("Disagrees");
+
         postList = (RecyclerView)findViewById(R.id.postList);
         postList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -152,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseRecyclerAdapter<Posts, PostsViewHolder> firebaseRecyclerAdapter =
             new FirebaseRecyclerAdapter<Posts, PostsViewHolder>(options)
             {
-                @Override protected void onBindViewHolder(@NonNull PostsViewHolder holder, int position, @NonNull Posts model)
+                @Override protected void onBindViewHolder(@NonNull PostsViewHolder holder,final int position, @NonNull Posts model)
                 {
 
                     //generating unique key for a post according to it's position in recycler view to edit post later
@@ -162,6 +172,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     holder.username.setText(model.getFullname());
                     holder.date.setText(model.getDate());
                     holder.description.setText(model.getDescription());
+                    holder.comment.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                         //   startActivity(new Intent(MainActivity.this,CommentActivity.class));
+                        }
+                    });
+                    holder.commentText.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                           // startActivity(new Intent(MainActivity.this,CommentActivity.class));
+                        }
+                    });
                    // holder.title.setText(model.getTitle());
                    // Picasso.get().load(model.getPostimage()).into(holder.postImage);
                     Picasso.get().load(model.getProfileimage()).into(holder.user_post_image);
@@ -175,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             startActivity(ClickPostIntent);
                         }
                     });
-                    //calling functions to show total agrees and dissagrees
+                    //calling functions to show total agrees and disagrees
                     holder.setAgreeTextStatus(PostKey);
                     holder.setDisagreeTextStatus(PostKey);
 
@@ -188,26 +210,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     if (agreeChecker){
-                                        if(dataSnapshot.child(PostKey).hasChild(currentUserID)){
+                                        if(dataSnapshot.child(PostKey).hasChild(currentUserID))
+                                        {
                                             //if agree is already clicked then it will remove agree on clicking it again
-                                          //  AgreeRef.child(postKey).child(currentUserID).removeValue(); //remove agree from database
-                                          //  agreeChecker = false;
+                                            AgreeRef.child(PostKey).child(currentUserID).removeValue(); //remove agree from database
+                                            agreeChecker = false;
                                           //  disagreeChecker = false;
                                             //disagreeChecker = true;
 
-
-
                                         }
                                         else {
+                                            final String PostKey = getRef(position).getKey();
+
+                                             AgreeRef = FirebaseDatabase.getInstance().getReference().child("Agrees");
+
                                              AgreeRef.child(PostKey).child(currentUserID).setValue(true); //adding agree
-                                             DisagreeRef.child(PostKey).child(currentUserID).removeValue();//removing disagree
-                                             disagreeChecker = false;
+                                            // DisagreeRef.child(PostKey).child(currentUserID).removeValue();//removing disagree
+                                            // disagreeChecker = false;
+
+
+
+                                             //ikr popup
+                                            ikrToastDisplay();
+                                            Toasty.info(MainActivity.this,AgreePopup,Toasty.LENGTH_SHORT).show();
                                             }
                                     }
                                 }
 
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                public void onCancelled(@NonNull DatabaseError databaseError)
+                                {
 
                                 }
                             });
@@ -215,6 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     });
 
                     //disagree
+
                     holder.disagree.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -228,6 +261,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                          //  disagreeChecker = false;
                                          //  agreeChecker = false;
                                         }else {
+                                            final String PostKey = getRef(position).getKey();
+                                            DisagreeRef = FirebaseDatabase.getInstance().getReference().child("Disagrees");
+
                                             DisagreeRef.child(PostKey).child(currentUserID).setValue(true); //adding disagree
                                             AgreeRef.child(PostKey).child(currentUserID).removeValue();     //removing agree
                                             agreeChecker = false;
@@ -243,6 +279,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     });
 
+
                 }
                 @NonNull @Override public PostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
                 {
@@ -254,6 +291,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //we set the recycler view to firebaseRecyclerAdapter
                 postList.setAdapter(firebaseRecyclerAdapter);
                 firebaseRecyclerAdapter.startListening();
+    }
+
+    private void ikrToastDisplay()
+    {
+        Random rand = new Random();
+
+        int i = rand.nextInt(7);
+
+            switch(i)
+            {
+                case 1: AgreePopup = "you said it";
+                break;
+
+                case 2: AgreePopup = "true that";
+                break;
+
+                case 3: AgreePopup = "foshizzle";
+                break;
+
+                case 4: AgreePopup = "roger that";
+                break;
+
+                case 5: AgreePopup = "roger that2";
+                break;
+
+                case 6: AgreePopup = "roger that3";
+                break;
+
+                case 7: AgreePopup = "roger that w";
+                break;
+
+            }
+
     }
 
     //class used for firebase ui in tutorial 23 to acess the components of all_post_layout from DisplayAllUsersPosts() method metioned right over this
@@ -483,14 +553,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_users_rants) {
             // Handle the camera action
-        } else if (id == R.id.nav_liked_rants) {
+        }
 
-        }  else if (id == R.id.nav_setting) {
+        else if (id == R.id.nav_liked_rants) {
+
+        }
+
+        else if (id == R.id.nav_setting) {
             startActivity(new Intent(MainActivity.this,SettingsActivity.class));
-        }else if (id==R.id.nav_logout)
+        }
+
+        else if (id==R.id.nav_logout)
         {
             mAuth.signOut();
             sendUserToLoginActivity();
+        }
+        else  if (id==R.id.Find_Friends)
+        {
+            sendUsersToFindFriendsActivity();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -501,5 +581,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void goToProfile(View view) {
         startActivity(new Intent(MainActivity.this,UsersActivity.class));
+    }
+
+    private void sendUsersToFindFriendsActivity()
+    {
+        Intent FindFriendsIntent = new Intent(MainActivity.this, FindFriendsActivity.class);
+        startActivity(FindFriendsIntent);
     }
 }

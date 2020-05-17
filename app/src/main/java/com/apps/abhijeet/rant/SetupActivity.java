@@ -68,7 +68,8 @@ public class SetupActivity extends AppCompatActivity {
         SaveInformationbuttion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SaveAccountSetupInformation();
+
+                    SaveAccountSetupInformation();
             }
         });
 

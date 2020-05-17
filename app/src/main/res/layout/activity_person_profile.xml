@@ -1,9 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PersonProfileActivity">
+    tools:context=".PersonProfileActivity"
+    android:backgroundTint="#212121"
+    android:background="@color/WhiteBrown"
+    android:layout_centerHorizontal="true">
 
-</android.support.constraint.ConstraintLayout>
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_person"
+        android:id="@+id/person_profile_pic"/>
+
+
+            <TextView
+                android:id="@+id/Person_FullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/person_profile_pic"
+                android:layout_marginTop="10dp"
+                android:text="Abhijeet Ghosh"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Person_UserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Person_FullName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="abhijeet42"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Person_Gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Person_UserName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Male"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Person_Dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Person_Gender"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="02/12/1998"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Person_Country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Person_Dob"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="India"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/Person_Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Person_Country"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="dead"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/Person_Send_Friend_request_btn"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/Person_Status"
+                android:text="Send Friend Request"
+                android:background="@color/color_theme"/>
+            
+            <Button
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Person_Send_Friend_request_btn"
+                android:text="Decline Friend Request"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimary"
+                android:id="@+id/Decline_Friend_Req"/>
+
+
+</RelativeLayout>

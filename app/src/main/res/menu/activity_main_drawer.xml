@@ -18,6 +18,11 @@
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_menu_manage"
             android:title="Settings" />
+        <item
+            android:id="@+id/Find_Friends"
+            android:icon="@drawable/find_people"
+            android:title="Find Friends"/>
+
     </group>
 
 
@@ -27,6 +32,8 @@
             android:title="Logout"
             />
     </group>
+
+
 
 
 
